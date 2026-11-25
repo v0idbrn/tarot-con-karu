@@ -374,6 +374,26 @@ function renderNewYear() {
       .map((item) => `<li>${item}</li>`)
       .join("");
   }
+
+  setupNewYearToggle();
+}
+
+/* El detalle del pack arranca oculto y se despliega con el botón. */
+function setupNewYearToggle() {
+  const toggle = document.getElementById("an-toggle");
+  const details = document.getElementById("an-detalle");
+  if (!toggle || !details) return;
+
+  const label = toggle.querySelector(".newyear-toggle-label");
+
+  toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    details.hidden = expanded;
+    if (label) {
+      label.textContent = expanded ? "Ver todo lo que incluye" : "Ocultar el detalle";
+    }
+  });
 }
 
 /* ---------------- Copiar y abrir Instagram ---------------- */

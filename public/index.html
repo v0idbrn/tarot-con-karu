@@ -451,15 +451,28 @@
               </h2>
               <p class="newyear-lead" id="an-desc"></p>
 
-              <h3 class="newyear-subtitle" id="an-incluye-titulo">
-                ¿Qué incluye este pack?
-              </h3>
-              <div class="newyear-features" id="an-incluye"></div>
+              <button
+                class="newyear-toggle"
+                type="button"
+                id="an-toggle"
+                aria-expanded="false"
+                aria-controls="an-detalle"
+              >
+                <span class="newyear-toggle-label">Ver todo lo que incluye</span>
+                <span class="newyear-toggle-icon" aria-hidden="true">⌄</span>
+              </button>
 
-              <h3 class="newyear-subtitle" id="an-entrega-titulo">
-                ¿Cómo se entrega? (Disponible para Salta y todo el país)
-              </h3>
-              <div class="newyear-delivery" id="an-entrega"></div>
+              <div class="newyear-details" id="an-detalle" hidden>
+                <h3 class="newyear-subtitle" id="an-incluye-titulo">
+                  ¿Qué incluye este pack?
+                </h3>
+                <div class="newyear-features" id="an-incluye"></div>
+
+                <h3 class="newyear-subtitle" id="an-entrega-titulo">
+                  ¿Cómo se entrega? (Disponible para Salta y todo el país)
+                </h3>
+                <div class="newyear-delivery" id="an-entrega"></div>
+              </div>
 
               <button class="btn btn-primary" type="button" data-copy="ano-nuevo">
                 Consultar por Instagram <span aria-hidden="true">✦</span>

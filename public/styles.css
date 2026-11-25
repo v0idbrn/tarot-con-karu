@@ -536,6 +536,52 @@ svg {
   color: #4a2b36;
 }
 
+.newyear-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 12px 22px;
+  border: 1px solid rgba(137, 34, 69, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 253, 252, 0.6);
+  color: var(--crimson);
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.newyear-toggle:hover {
+  background: rgba(255, 253, 252, 0.92);
+  border-color: var(--crimson);
+}
+
+.newyear-toggle:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 3px;
+}
+
+.newyear-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.newyear-toggle[aria-expanded="true"] .newyear-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.newyear-details {
+  width: 100%;
+}
+
+.newyear-details .newyear-subtitle:first-child {
+  margin-top: 26px;
+}
+
 .newyear-subtitle {
   margin-top: 30px;
   font-family: var(--serif);
