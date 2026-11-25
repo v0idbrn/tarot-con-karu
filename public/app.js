@@ -60,31 +60,51 @@ function buildMessage(item, kind) {
   return `${greeting} Me interesa la tirada «${item.nombre}»${priceText}. ¿Tenés disponibilidad para una lectura? ¡Gracias! ✨`;
 }
 
-async function copyText(text) {
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-  } catch (error) {
-    /* continúa con el método alternativo */
-  }
+/*
+ * La copia es sincrónica y ocurre dentro del gesto del clic: si se abre
+ * Instagram antes de copiar, la pestaña nueva se queda con el foco y la
+ * escritura en el portapapeles falla.
+ */
+function copyText(text) {
+  let copied = false;
+  let textarea = null;
+  const previousFocus = document.activeElement;
 
   try {
-    const textarea = document.createElement("textarea");
+    textarea = document.createElement("textarea");
     textarea.value = text;
     textarea.setAttribute("readonly", "");
+    textarea.setAttribute("aria-hidden", "true");
     textarea.style.position = "fixed";
-    textarea.style.top = "-1000px";
+    textarea.style.top = "0";
+    textarea.style.left = "-9999px";
     textarea.style.opacity = "0";
     document.body.appendChild(textarea);
+    textarea.focus();
     textarea.select();
-    const copied = document.execCommand("copy");
-    textarea.remove();
-    return copied;
+    textarea.setSelectionRange(0, text.length);
+    copied = document.execCommand("copy");
   } catch (error) {
-    return false;
+    copied = false;
   }
+
+  if (textarea) textarea.remove();
+  if (previousFocus && typeof previousFocus.focus === "function") {
+    previousFocus.focus();
+  }
+
+  return copied;
+}
+
+/* Respaldo asíncrono para navegadores donde execCommand no está disponible. */
+function copyTextAsync(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text).then(
+      () => true,
+      () => false
+    );
+  }
+  return Promise.resolve(false);
 }
 
 function showToast(message) {
@@ -367,15 +387,23 @@ document.addEventListener("click", (event) => {
 
   const message = buildMessage(entry.item, entry.kind);
 
-  // Se abre en el mismo gesto del clic para que el navegador no lo bloquee.
+  // 1) Copiar primero, todavía dentro del gesto del clic.
+  const copied = copyText(message);
+
+  // 2) Abrir Instagram en el mismo gesto para que el navegador no lo bloquee.
   window.open(IG_URL, "_blank", "noopener,noreferrer");
 
-  copyText(message).then((copied) => {
-    showToast(
-      copied
-        ? `Mensaje copiado ✦ Pegalo en el DM de ${instagram.handle}`
-        : "Abrimos Instagram: copiá el mensaje manualmente si no se copió."
-    );
+  const successMessage = `Mensaje copiado ✦ Pegalo en el DM de ${instagram.handle}`;
+  const failureMessage =
+    "Abrimos Instagram: copiá el mensaje manualmente si no se copió.";
+
+  if (copied) {
+    showToast(successMessage);
+    return;
+  }
+
+  copyTextAsync(message).then((copiedAsync) => {
+    showToast(copiedAsync ? successMessage : failureMessage);
   });
 });
 
