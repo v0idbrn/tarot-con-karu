@@ -1747,6 +1747,20 @@ svg {
   background: linear-gradient(135deg, #fdf6f8 0%, #f6e4ea 100%);
 }
 
+.section-banner-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.section-banner-title {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 1.9vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--crimson);
+}
+
 .section-banner-note {
   font-size: 0.88rem;
   color: var(--muted);
