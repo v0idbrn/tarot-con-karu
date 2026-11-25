@@ -1,6 +1,6 @@
 # Tarot con Karu
 
-Sitio estático de **Tarot con Karu** (`@tarot.con.karu`): tiradas de tarot, sesiones por tiempo, rituales, Consulta de Orientación y lectura especial de Año Nuevo. Se despliega en **Cloudflare Workers (Static Assets)** sirviendo desde `./public`.
+Sitio estático de **Tarot con Karu** (`@tarot.con.karu`): tiradas de tarot, sesiones por tiempo, rituales, Consulta de Orientación y el Pack Arcano del Año & Vela Intencionada. Se despliega en **Cloudflare Workers (Static Assets)** sirviendo desde `./public`.
 
 - HTML, CSS y JavaScript vanilla, sin build step.
 - Catálogo editable desde `public/data/services.js`.
@@ -94,8 +94,10 @@ En `NEW_YEAR_SERVICE`:
 | --- | --- |
 | `precio` | Número en ARS (ej. `15000`) o `null` mientras esté a confirmar. |
 | `precioTexto` | Texto que se muestra cuando `precio` es `null`. |
+| `precioNota` | Aclaración bajo el precio (ej. velas adicionales). |
 | `descripcion` | Párrafo principal del banner. |
-| `incluye` | Array de ítems del banner. |
+| `incluye` / `incluyeTitulo` | Array de `{ titulo, texto }` y título del bloque «¿Qué incluye?». |
+| `entrega` | `{ titulo, lectura: { titulo, texto }, velaIntro, modalidades: [{ titulo, texto }] }`. |
 | `condiciones` | Array del panel lateral. |
 | `mensaje` | Mensaje prearmado para copiar y enviar por IG. |
 

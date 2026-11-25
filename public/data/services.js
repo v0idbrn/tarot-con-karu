@@ -31,31 +31,73 @@ export const tiktok = {
 
 export const NEW_YEAR_SERVICE = {
   id: "ano-nuevo",
-  etiqueta: "Edición especial",
-  nombre: "Lectura de Año Nuevo",
+  etiqueta: "Lanzamiento Limitado · Año Nuevo",
+  nombre:
+    "Pack Arcano del Año & Vela Intencionada (Lanzamiento Limitado)",
 
   // Precio en ARS. Usá un número (por ej. 15000) o null mientras esté a confirmar.
-  precio: null,
+  precio: 15000,
   precioTexto: "Precio a confirmar",
+  precioNota: "Velas intencionadas adicionales: $3.000 c/u",
 
   descripcion:
-    "Una tirada pensada para abrir el año con claridad: qué energías te acompañan, qué ciclos se cierran, qué conviene soltar y qué caminos se abren en el amor, el trabajo y tus vínculos. Se arma como una lectura completa y personalizada, con espacio para tus preguntas.",
+    "Una propuesta integral y de cupos limitados diseñada para que conozcas la energía que te va a acompañar durante todo este nuevo ciclo y puedas potenciar tus propios deseos e intenciones.",
 
+  incluyeTitulo: "¿Qué incluye este pack?",
   incluye: [
-    "Panorama general del año que empieza",
-    "Amor, vínculos y vida social",
-    "Trabajo, estudio y economía",
-    "Aprendizajes, bloqueos y consejo de las cartas",
+    {
+      titulo: "Tu Arcano del Año (Numerología y Tarot)",
+      texto:
+        "A partir de tu fecha de nacimiento calculamos cuál es el Arcano que rige tu año personal. Esta lectura no define tu destino ni sentencia si vas a tener un «buen» o «mal» año; su función es servirte de guía para comprender cuál es la energía principal que va a fluir a tu alrededor, qué aprendizajes trae esta etapa y cómo podés aprovecharla a tu favor.",
+    },
+    {
+      titulo: "Consejo del Tarot",
+      texto:
+        "Una lectura puntual para orientar tus decisiones en este nuevo comienzo. No se realiza porque tu Arcano sea negativo, sino como una herramienta práctica para que sepas cómo moverte, qué priorizar y cómo convivir en armonía con la energía que te rodea.",
+    },
+    {
+      titulo: "Mensaje del Oráculo de las Hadas",
+      texto:
+        "Un mensaje sutil, cercano y motivador pensado especialmente para tu momento actual. Funciona como un impulso de ánimo y claridad para acompañar tu presente desde una energía dulce y positiva.",
+    },
+    {
+      titulo: "1 Vela Intencionada (100% a tu elección)",
+      texto:
+        "Una vela alta preparada y trabajada artesanalmente. Importante: esta vela no se basa únicamente en tu Arcano del Año, sino en lo que vos sientas que más necesitás trabajar o atraer en este momento (amor, abundancia o protección, entre otras opciones disponibles). Si querés potenciar más de un área, podés sumar velitas intencionadas extra por $3.000 cada una.",
+    },
   ],
 
+  entrega: {
+    titulo: "¿Cómo se entrega? (Disponible para Salta y todo el país)",
+    lectura: {
+      titulo: "Tu lectura completa",
+      texto:
+        "Se entrega en una imagen personalizada, diseñada de forma clara y estética para que la guardes en tu celular y puedas volver a leerla cada vez que necesites recordar tu guía del año.",
+    },
+    velaIntro: "Tu vela intencionada: podés elegir la modalidad que te quede más cómoda.",
+    velaTitulo: "Tu vela intencionada",
+    modalidades: [
+      {
+        titulo: "Encendido y velación en mi altar (incluido en el valor)",
+        texto:
+          "Si no podés prenderla o preferís que lo haga yo, preparo, intenciono y velo tu vela en mi espacio. Te envío fotos, videos y una breve reseña de cómo se trabajó tu pedido.",
+      },
+      {
+        titulo: "Entrega física",
+        texto:
+          "Te llevás tu vela lista con su bolsita e instructivo de encendido (retiro sin cargo en Salta capital o envío por correo a todo el país a cargo del cliente, sujeto a cobertura postal).",
+      },
+    ],
+  },
+
   condiciones: [
-    "Turnos limitados para esta edición",
-    "Se coordina fecha y forma de pago por Instagram",
-    "La lectura se entrega de forma privada, por audio o texto",
+    "Cupos limitados para este lanzamiento",
+    "Retiro sin cargo en Salta capital",
+    "Envío a todo el país a cargo del cliente, sujeto a cobertura postal",
   ],
 
   mensaje:
-    "¡Hola Karu! 🌙 Quiero consultar por la lectura especial de Año Nuevo. ¿Me contás cómo funciona, el precio y las condiciones? ¡Gracias! ✨",
+    "¡Hola Karu! 🌙 Me interesa el «Pack Arcano del Año & Vela Intencionada (Lanzamiento Limitado)» ($15.000). ¿Me contás cómo reservo mi cupo? ¡Gracias! ✨",
 };
 
 /* ------------------------------------------------------------

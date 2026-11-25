@@ -293,6 +293,8 @@ function renderNewYear() {
   setText("an-etiqueta", NEW_YEAR_SERVICE.etiqueta);
   setText("an-titulo", NEW_YEAR_SERVICE.nombre);
   setText("an-desc", NEW_YEAR_SERVICE.descripcion);
+  setText("an-incluye-titulo", NEW_YEAR_SERVICE.incluyeTitulo);
+  setText("an-entrega-titulo", NEW_YEAR_SERVICE.entrega?.titulo);
 
   const priceEl = document.getElementById("an-precio");
   if (priceEl) {
@@ -302,11 +304,48 @@ function renderNewYear() {
       "A confirmar";
   }
 
+  setText("an-precio-nota", NEW_YEAR_SERVICE.precioNota);
+
   const incluyeEl = document.getElementById("an-incluye");
   if (incluyeEl && Array.isArray(NEW_YEAR_SERVICE.incluye)) {
     incluyeEl.innerHTML = NEW_YEAR_SERVICE.incluye
-      .map((item) => `<li>${item}</li>`)
+      .map(
+        (item) => `
+          <article class="feature">
+            <h4 class="feature-title">${item.titulo}</h4>
+            <p class="feature-text">${item.texto}</p>
+          </article>
+        `
+      )
       .join("");
+  }
+
+  const entregaEl = document.getElementById("an-entrega");
+  const entrega = NEW_YEAR_SERVICE.entrega;
+  if (entregaEl && entrega) {
+    const modalidades = Array.isArray(entrega.modalidades)
+      ? entrega.modalidades
+          .map(
+            (modalidad) => `
+              <li class="delivery-mode">
+                <h4 class="feature-title">${modalidad.titulo}</h4>
+                <p class="feature-text">${modalidad.texto}</p>
+              </li>
+            `
+          )
+          .join("")
+      : "";
+
+    entregaEl.innerHTML = `
+      <article class="feature feature--reading">
+        <h4 class="feature-title">${entrega.lectura.titulo}</h4>
+        <p class="feature-text">${entrega.lectura.texto}</p>
+      </article>
+      <div class="delivery-modes">
+        <p class="delivery-intro">${entrega.velaIntro}</p>
+        <ol class="delivery-list">${modalidades}</ol>
+      </div>
+    `;
   }
 
   const condEl = document.getElementById("an-cond");
