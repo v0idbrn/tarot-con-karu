@@ -60,7 +60,8 @@ h3 {
   color: var(--ink);
 }
 
-p {
+p,
+figure {
   margin: 0;
 }
 
@@ -1704,6 +1705,168 @@ svg {
 
   .toast {
     border-radius: 18px;
+  }
+}
+
+/* ---------------- Banners de sección (landing) ---------------- */
+
+.section-banner {
+  display: block;
+  overflow: hidden;
+  margin-bottom: clamp(26px, 3.4vw, 40px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 26px;
+  background: linear-gradient(135deg, #fdf6f8 0%, #f6e4ea 100%);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.section-banner:hover {
+  transform: translateY(-3px);
+  border-color: rgba(192, 86, 123, 0.45);
+  box-shadow: var(--shadow-lg);
+}
+
+.section-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------------- Encabezado de páginas de sección ---------------- */
+
+.page-hero {
+  padding-block: clamp(18px, 3vw, 34px) clamp(8px, 1.6vw, 16px);
+}
+
+.page-hero-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 30px;
+  background: var(--card);
+  box-shadow: var(--shadow-lg);
+}
+
+.page-hero-media {
+  background: linear-gradient(135deg, #fdf6f8 0%, #f6e4ea 100%);
+}
+
+.page-hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.page-hero-body {
+  padding: clamp(20px, 3vw, 36px);
+  border-top: 1px solid var(--line);
+  background: linear-gradient(135deg, #fffdfc 0%, #f8ebef 100%);
+}
+
+.page-hero-body .eyebrow {
+  margin-bottom: 10px;
+}
+
+.page-title {
+  font-size: clamp(1.9rem, 1.1rem + 2.2vw, 2.9rem);
+  line-height: 1.08;
+  color: var(--crimson);
+}
+
+.page-lead {
+  max-width: 66ch;
+  margin-top: 12px;
+  font-size: 0.94rem;
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+.page-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.page-chips a {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--crimson);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.page-chips a:hover {
+  background: var(--blush-bg);
+  border-color: var(--blush);
+}
+
+/* ---------------- Paso previo de rituales ---------------- */
+
+.list-label {
+  margin-bottom: 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rosy);
+}
+
+.prerequisite-wrap {
+  margin-bottom: 34px;
+}
+
+.prerequisite-wrap + .list-label {
+  margin-top: 4px;
+}
+
+.card--prerequisite {
+  border: 1px solid rgba(137, 34, 69, 0.26);
+  background: linear-gradient(135deg, #fffdfc 0%, #f7e8ec 100%);
+}
+
+/* ---------------- Orientación (página dedicada) ---------------- */
+
+.orientacion-aclaracion {
+  max-width: 78ch;
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-left: 2px solid var(--blush);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+#lecturas-tabs {
+  scroll-margin-top: 110px;
+}
+
+#paso-previo {
+  scroll-margin-top: 110px;
+}
+
+@media (max-width: 720px) {
+  .section-banner,
+  .page-hero-card {
+    border-radius: 22px;
+  }
+
+  .page-hero-body {
+    padding: 20px 18px 22px;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
   }
 }
 

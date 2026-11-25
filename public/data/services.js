@@ -24,6 +24,45 @@ export const tiktok = {
 };
 
 /* ------------------------------------------------------------
+   PÁGINAS DE SECCIÓN
+   Encabezado y banner de cada página dedicada. Los banners
+   viven en public/assets y también se usan en la landing.
+   ------------------------------------------------------------ */
+
+export const SECTION_PAGES = {
+  lecturas: {
+    pageUrl: "./lecturas.html",
+    banner: "./assets/banner-tarot.webp",
+    bannerAlt:
+      "Lecturas de Tarot: una mano sostiene cartas frente a un círculo lunar entre nubes rosadas",
+    etiqueta: "Lecturas de tarot",
+    titulo: "Lecturas de tarot",
+    lead:
+      "Tiradas individuales para amor, trabajo, espiritualidad y vida general, más sesiones por tiempo para combinar varias consultas en un mismo encuentro. Elegí la que necesites y coordinamos por Instagram.",
+  },
+  rituales: {
+    pageUrl: "./rituales.html",
+    banner: "./assets/banner-rituales.webp",
+    bannerAlt:
+      "Trabajos de brujería ritual: velas, hierbas y cristales sobre nubes rosadas",
+    etiqueta: "Brujería y rituales",
+    titulo: "Trabajos de brujería ritual",
+    lead:
+      "Limpieza energética, autoendulzamiento, endulzamiento de pareja, corte de lazos y abrecaminos. Cada ritual se evalúa antes de realizarse y requiere una lectura previa.",
+  },
+  orientacion: {
+    pageUrl: "./orientacion.html",
+    banner: "./assets/banner-orientacion.webp",
+    bannerAlt:
+      "Orientación: un ojo solar y manos que sostienen una brújula lunar entre nubes rosadas",
+    etiqueta: "No sé por dónde empezar",
+    titulo: "Consulta de Orientación",
+    lead:
+      "Una charla breve para ordenar lo que te pasa y saber qué tirada o ritual te conviene. Si después contratás un servicio, los $3.000 se descuentan del total.",
+  },
+};
+
+/* ------------------------------------------------------------
    ESPECIAL AÑO NUEVO
    Actualizá precio, descripción y condiciones cuando se abra
    la edición del año.
@@ -291,4 +330,26 @@ export const ORIENTATION_SERVICE = {
   precioNota: "100% bonificables al contratar un servicio",
   descripcion:
     "¿No sabés si necesitás una lectura de tarot o un ritual? Reservá este espacio para contarme por mensaje o audio (a través de Instagram o TikTok) qué te está pasando. Analizamos brevemente tu situación para guiarte y recomendarte la tirada o el trabajo espiritual más adecuado para vos. Si luego decidís contratar una lectura o un ritual, los $3.000 de esta consulta se te descuentan del total del servicio.",
+  duracion: "Charla de asesoramiento de hasta 15 minutos · no incluye tirada de cartas",
+
+  // Detalle que se muestra en la página dedicada de Orientación.
+  pasos: [
+    {
+      titulo: "Me contás qué te pasa",
+      texto:
+        "Por mensaje o audio, a través de Instagram o TikTok. No hace falta que tengas todo claro: alcanza con contarme tu situación y qué te gustaría resolver.",
+    },
+    {
+      titulo: "Analizamos juntas tu caso",
+      texto:
+        "Reviso brevemente lo que me contás y te explico qué camino tiene más sentido: una tirada puntual, una sesión por tiempo o un trabajo energético.",
+    },
+    {
+      titulo: "Te llevás una recomendación concreta",
+      texto:
+        "Salís sabiendo qué contratar, cuánto sale y qué esperar. Si decidís avanzar, los $3.000 de la consulta se descuentan del total del servicio.",
+    },
+  ],
+  aclaracion:
+    "Esta consulta es una charla de asesoramiento: no incluye tirada de cartas ni evaluación energética. Sirve para orientarte antes de invertir en una lectura o un ritual.",
 };
