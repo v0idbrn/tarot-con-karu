@@ -151,7 +151,7 @@
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#tarot">
+              <a class="btn btn-primary" href="./lecturas.html">
                 Ver lecturas <span aria-hidden="true">✦</span>
               </a>
               <a class="btn btn-ghost" href="#ano-nuevo">Especial Año Nuevo</a>
@@ -522,69 +522,11 @@
               height="644"
               loading="lazy"
             />
+            <span class="section-banner-foot">
+              <span class="section-banner-note">Tiradas individuales y sesiones por tiempo</span>
+              <span class="section-banner-cta">Ver lecturas <span aria-hidden="true">→</span></span>
+            </span>
           </a>
-          <header class="section-head">
-            <div>
-              <p class="eyebrow">
-                <span class="eyebrow-line" aria-hidden="true"></span>Lecturas de tarot
-              </p>
-              <h2>Elegí cómo querés consultar</h2>
-            </div>
-            <p class="section-desc">
-              Tiradas individuales o sesiones por tiempo. Precios en pesos
-              argentinos (ARS).
-            </p>
-          </header>
-
-          <div class="tabs" role="tablist" aria-label="Modalidad de lectura">
-            <button
-              class="tab"
-              id="tab-tiradas"
-              type="button"
-              role="tab"
-              aria-selected="true"
-              aria-controls="panel-tiradas"
-            >
-              Tiradas individuales
-            </button>
-            <button
-              class="tab"
-              id="tab-sesiones"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="panel-sesiones"
-              tabindex="-1"
-            >
-              Sesiones por tiempo
-            </button>
-          </div>
-
-          <div
-            class="tab-panel"
-            id="panel-tiradas"
-            role="tabpanel"
-            aria-labelledby="tab-tiradas"
-          >
-            <div
-              class="filters"
-              id="filtros"
-              role="group"
-              aria-label="Filtrar tiradas por categoría"
-            ></div>
-            <div class="tiradas-grid" id="tiradas-grid"></div>
-          </div>
-
-          <div
-            class="tab-panel"
-            id="panel-sesiones"
-            role="tabpanel"
-            aria-labelledby="tab-sesiones"
-            hidden
-          >
-            <blockquote class="panel-intro" id="session-intro"></blockquote>
-            <div class="tiradas-grid" id="sesiones-grid"></div>
-          </div>
         </div>
       </section>
 
@@ -603,26 +545,11 @@
               height="672"
               loading="lazy"
             />
+            <span class="section-banner-foot">
+              <span class="section-banner-note">Trabajos energéticos con lectura previa</span>
+              <span class="section-banner-cta">Ver rituales <span aria-hidden="true">→</span></span>
+            </span>
           </a>
-          <header class="section-head">
-            <div>
-              <p class="eyebrow">
-                <span class="eyebrow-line" aria-hidden="true"></span>Brujería y rituales
-              </p>
-              <h2>Trabajos energéticos</h2>
-            </div>
-            <p class="section-desc">
-              Cada ritual se evalúa antes de realizarse.
-            </p>
-          </header>
-
-          <aside class="warning" aria-labelledby="ritual-warning-title">
-            <span class="warning-badge">Importante</span>
-            <h3 id="ritual-warning-title">Paso previo obligatorio</h3>
-            <p id="ritual-warning-text"></p>
-          </aside>
-
-          <div class="tiradas-grid" id="rituales-grid"></div>
         </div>
       </section>
 
@@ -641,8 +568,11 @@
               height="672"
               loading="lazy"
             />
+            <span class="section-banner-foot">
+              <span class="section-banner-note">Una charla breve para elegir tu servicio</span>
+              <span class="section-banner-cta">Ver orientación <span aria-hidden="true">→</span></span>
+            </span>
           </a>
-          <div class="orientation" id="orientation-card"></div>
         </div>
       </section>
 
@@ -759,8 +689,6 @@
         <p>Lecturas de tarot · Argentina</p>
       </div>
     </footer>
-
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script type="module" src="app.js"></script>
   </body>

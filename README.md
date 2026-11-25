@@ -4,6 +4,7 @@ Sitio estático de **Tarot con Karu** (`@tarot.con.karu`): tiradas de tarot, ses
 
 - HTML, CSS y JavaScript vanilla, sin build step.
 - Catálogo editable desde `public/data/services.js`.
+- La landing es un índice: sus tres banners abren las páginas de Lecturas, Rituales y Orientación, donde vive el catálogo completo.
 - Botón "Copiar mensaje y abrir IG" con aviso tipo toast y apertura de Instagram.
 
 ## Estructura
@@ -12,13 +13,13 @@ Sitio estático de **Tarot con Karu** (`@tarot.con.karu`): tiradas de tarot, ses
 .
 ├── wrangler.jsonc          # Workers + assets desde ./public
 ├── public/
-│   ├── index.html           # Secciones: inicio, banner año nuevo, tarot, rituales, orientación, reserva
+│   ├── index.html           # Hero, banner del pack y accesos a lecturas, rituales y orientación
 │   ├── arcano-del-ano.html  # Página propia del Pack Arcano del Año
 │   ├── lecturas.html        # Página dedicada de Lecturas de tarot
 │   ├── rituales.html        # Página dedicada de Trabajos de brujería ritual
 │   ├── orientacion.html     # Página dedicada de la Consulta de Orientación
 │   ├── styles.css           # Paleta, tipografía y responsive
-│   ├── app.js               # Render de la landing, pestañas, filtros, copiado y toast
+│   ├── app.js               # Banner del pack, contadores del hero y año del footer
 │   ├── arcano.js            # Render de la página del pack
 │   ├── lecturas.js          # Render de tiradas, filtros y sesiones de /lecturas
 │   ├── rituales.js          # Render del paso previo y los rituales de /rituales
