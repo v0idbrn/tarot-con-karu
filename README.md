@@ -12,9 +12,14 @@ Sitio estático de **Tarot con Karu** (`@tarot.con.karu`): tiradas de tarot, ses
 .
 ├── wrangler.jsonc          # Workers + assets desde ./public
 ├── public/
-│   ├── index.html          # Secciones: inicio, año nuevo, tarot, rituales, orientación, reserva
+│   ├── index.html          # Secciones: inicio, banner año nuevo, tarot, rituales, orientación, reserva
+│   ├── arcano-del-ano.html # Página propia del Pack Arcano del Año
 │   ├── styles.css          # Paleta, tipografía y responsive
 │   ├── app.js              # Render, pestañas, filtros, copiado y toast
+│   ├── arcano.js           # Render de la página del pack
+│   ├── clipboard.js        # Copiado al portapapeles compartido
+│   ├── assets/
+│   │   └── arcano-pack.svg # Ilustración del banner y de la página del pack
 │   └── data/
 │       └── services.js     # ✏️ Todo el contenido editable
 └── README.md
@@ -39,7 +44,7 @@ Todo el contenido vive en `public/data/services.js`:
 | `RITUAL_PREVIOUS_STEP` | `#rituales` → bloque **Importante — Paso previo obligatorio** |
 | `RITUAL_SERVICES` | `#rituales` → tarjetas de rituales |
 | `ORIENTATION_SERVICE` | `#orientacion` → Consulta de Orientación |
-| `NEW_YEAR_SERVICE` | `#ano-nuevo` → banner especial editable |
+| `NEW_YEAR_SERVICE` | `#ano-nuevo` → banner cliqueable de la landing + página `arcano-del-ano.html` |
 | `instagram` / `tiktok` | Enlaces y handle usados en los mensajes y el footer |
 
 ### Agregar una tirada
@@ -92,14 +97,20 @@ En `NEW_YEAR_SERVICE`:
 
 | Campo | Qué hace |
 | --- | --- |
+| `nombreCorto` | Título que se muestra en el banner de la landing (sin «Lanzamiento Limitado»). |
+| `pageUrl` | Página propia del pack (`./arcano-del-ano.html`). |
+| `bannerTexto` / `bannerCta` | Párrafo y texto del botón del banner de la landing. |
 | `precio` | Número en ARS (ej. `15000`) o `null` mientras esté a confirmar. |
 | `precioTexto` | Texto que se muestra cuando `precio` es `null`. |
 | `precioNota` | Aclaración bajo el precio (ej. velas adicionales). |
-| `descripcion` | Párrafo principal del banner. |
+| `descripcion` | Párrafo principal de la página del pack. |
 | `incluye` / `incluyeTitulo` | Array de `{ titulo, texto }` y título del bloque «¿Qué incluye?». |
 | `entrega` | `{ titulo, lectura: { titulo, texto }, velaIntro, modalidades: [{ titulo, texto }] }`. |
 | `condiciones` | Array del panel lateral. |
+| `sorteo` | `{ titulo, texto }` del bloque del sorteo (si se elimina, la sección se oculta sola). |
 | `mensaje` | Mensaje prearmado para copiar y enviar por IG. |
+
+El pack tiene su **página dedicada** en `public/arcano-del-ano.html`, armada por `arcano.js` con los mismos datos. La landing solo muestra un banner cliqueable que lleva ahí.
 
 ### Precios y mensajes
 

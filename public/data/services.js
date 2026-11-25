@@ -34,6 +34,10 @@ export const NEW_YEAR_SERVICE = {
   etiqueta: "Lanzamiento Limitado · Año Nuevo",
   nombre:
     "Pack Arcano del Año & Vela Intencionada (Lanzamiento Limitado)",
+  // Título corto que se muestra en el banner de la landing.
+  nombreCorto: "Pack Arcano del Año & Vela Intencionada",
+  // Página propia con todo el detalle del pack.
+  pageUrl: "./arcano-del-ano.html",
 
   // Precio en ARS. Usá un número (por ej. 15000) o null mientras esté a confirmar.
   precio: 15000,
@@ -42,6 +46,11 @@ export const NEW_YEAR_SERVICE = {
 
   descripcion:
     "Una propuesta integral y de cupos limitados diseñada para que conozcas la energía que te va a acompañar durante todo este nuevo ciclo y puedas potenciar tus propios deseos e intenciones.",
+
+  // Textos del banner compacto de la landing.
+  bannerTexto:
+    "Una propuesta integral y de cupos limitados para conocer la energía que va a acompañar tu nuevo ciclo y potenciar tus propios deseos e intenciones.",
+  bannerCta: "Hacé clic para ver todo lo que incluye, modalidades y sorteo",
 
   incluyeTitulo: "¿Qué incluye este pack?",
   incluye: [
@@ -95,6 +104,12 @@ export const NEW_YEAR_SERVICE = {
     "Retiro sin cargo en Salta capital",
     "Envío a todo el país a cargo del cliente, sujeto a cobertura postal",
   ],
+
+  sorteo: {
+    titulo: "Sorteo Especial de Fin de Año",
+    texto:
+      "Con motivo de este lanzamiento limitado, voy a estar realizando un sorteo especial de fin de año exclusivo para mis seguidores de Instagram y TikTok. Para participar y poder recibir el premio, es requisito obligatorio seguirme sí o sí en Instagram y en TikTok; en caso de que la persona ganadora no cumpla con este requisito, no se realizará la entrega ni el encendido de la vela y se volverá a sortear.",
+  },
 
   mensaje:
     "¡Hola Karu! 🌙 Me interesa el «Pack Arcano del Año & Vela Intencionada (Lanzamiento Limitado)» ($15.000). ¿Me contás cómo reservo mi cupo? ¡Gracias! ✨",

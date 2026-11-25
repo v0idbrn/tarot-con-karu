@@ -14,6 +14,7 @@ import {
   ORIENTATION_SERVICE,
   instagram,
 } from "./data/services.js";
+import { copyText, copyTextAsync } from "./clipboard.js";
 
 const IG_URL = instagram.url;
 const ALL = "Todas";
@@ -58,53 +59,6 @@ function buildMessage(item, kind) {
   }
 
   return `${greeting} Me interesa la tirada «${item.nombre}»${priceText}. ¿Tenés disponibilidad para una lectura? ¡Gracias! ✨`;
-}
-
-/*
- * La copia es sincrónica y ocurre dentro del gesto del clic: si se abre
- * Instagram antes de copiar, la pestaña nueva se queda con el foco y la
- * escritura en el portapapeles falla.
- */
-function copyText(text) {
-  let copied = false;
-  let textarea = null;
-  const previousFocus = document.activeElement;
-
-  try {
-    textarea = document.createElement("textarea");
-    textarea.value = text;
-    textarea.setAttribute("readonly", "");
-    textarea.setAttribute("aria-hidden", "true");
-    textarea.style.position = "fixed";
-    textarea.style.top = "0";
-    textarea.style.left = "-9999px";
-    textarea.style.opacity = "0";
-    document.body.appendChild(textarea);
-    textarea.focus();
-    textarea.select();
-    textarea.setSelectionRange(0, text.length);
-    copied = document.execCommand("copy");
-  } catch (error) {
-    copied = false;
-  }
-
-  if (textarea) textarea.remove();
-  if (previousFocus && typeof previousFocus.focus === "function") {
-    previousFocus.focus();
-  }
-
-  return copied;
-}
-
-/* Respaldo asíncrono para navegadores donde execCommand no está disponible. */
-function copyTextAsync(text) {
-  if (navigator.clipboard && window.isSecureContext) {
-    return navigator.clipboard.writeText(text).then(
-      () => true,
-      () => false
-    );
-  }
-  return Promise.resolve(false);
 }
 
 function showToast(message) {
@@ -338,10 +292,9 @@ function renderNewYear() {
   };
 
   setText("an-etiqueta", NEW_YEAR_SERVICE.etiqueta);
-  setText("an-titulo", NEW_YEAR_SERVICE.nombre);
-  setText("an-desc", NEW_YEAR_SERVICE.descripcion);
-  setText("an-incluye-titulo", NEW_YEAR_SERVICE.incluyeTitulo);
-  setText("an-entrega-titulo", NEW_YEAR_SERVICE.entrega?.titulo);
+  setText("an-titulo", NEW_YEAR_SERVICE.nombreCorto ?? NEW_YEAR_SERVICE.nombre);
+  setText("an-desc", NEW_YEAR_SERVICE.bannerTexto ?? NEW_YEAR_SERVICE.descripcion);
+  setText("an-cta", NEW_YEAR_SERVICE.bannerCta);
 
   const priceEl = document.getElementById("an-precio");
   if (priceEl) {
@@ -351,76 +304,8 @@ function renderNewYear() {
       "A confirmar";
   }
 
-  setText("an-precio-nota", NEW_YEAR_SERVICE.precioNota);
-
-  const incluyeEl = document.getElementById("an-incluye");
-  if (incluyeEl && Array.isArray(NEW_YEAR_SERVICE.incluye)) {
-    incluyeEl.innerHTML = NEW_YEAR_SERVICE.incluye
-      .map(
-        (item) => `
-          <article class="feature">
-            <h4 class="feature-title">${item.titulo}</h4>
-            <p class="feature-text">${item.texto}</p>
-          </article>
-        `
-      )
-      .join("");
-  }
-
-  const entregaEl = document.getElementById("an-entrega");
-  const entrega = NEW_YEAR_SERVICE.entrega;
-  if (entregaEl && entrega) {
-    const modalidades = Array.isArray(entrega.modalidades)
-      ? entrega.modalidades
-          .map(
-            (modalidad) => `
-              <li class="delivery-mode">
-                <h4 class="feature-title">${modalidad.titulo}</h4>
-                <p class="feature-text">${modalidad.texto}</p>
-              </li>
-            `
-          )
-          .join("")
-      : "";
-
-    entregaEl.innerHTML = `
-      <article class="feature feature--reading">
-        <h4 class="feature-title">${entrega.lectura.titulo}</h4>
-        <p class="feature-text">${entrega.lectura.texto}</p>
-      </article>
-      <div class="delivery-modes">
-        <p class="delivery-intro">${entrega.velaIntro}</p>
-        <ol class="delivery-list">${modalidades}</ol>
-      </div>
-    `;
-  }
-
-  const condEl = document.getElementById("an-cond");
-  if (condEl && Array.isArray(NEW_YEAR_SERVICE.condiciones)) {
-    condEl.innerHTML = NEW_YEAR_SERVICE.condiciones
-      .map((item) => `<li>${item}</li>`)
-      .join("");
-  }
-
-  setupNewYearToggle();
-}
-
-/* El detalle del pack arranca oculto y se despliega con el botón. */
-function setupNewYearToggle() {
-  const toggle = document.getElementById("an-toggle");
-  const details = document.getElementById("an-detalle");
-  if (!toggle || !details) return;
-
-  const label = toggle.querySelector(".newyear-toggle-label");
-
-  toggle.addEventListener("click", () => {
-    const expanded = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!expanded));
-    details.hidden = expanded;
-    if (label) {
-      label.textContent = expanded ? "Ver todo lo que incluye" : "Ocultar el detalle";
-    }
-  });
+  const link = document.getElementById("an-link");
+  if (link && NEW_YEAR_SERVICE.pageUrl) link.href = NEW_YEAR_SERVICE.pageUrl;
 }
 
 /* ---------------- Detalle de cada tarjeta ---------------- */
