@@ -43,24 +43,13 @@ function render() {
   document.title = `${NEW_YEAR_SERVICE.nombre} · Tarot con Karu`;
 
   setText("an-etiqueta", NEW_YEAR_SERVICE.etiqueta);
-  setText("an-titulo", NEW_YEAR_SERVICE.nombre);
+  setText("an-titulo", NEW_YEAR_SERVICE.nombreCorto ?? NEW_YEAR_SERVICE.nombre);
   setText("an-desc", NEW_YEAR_SERVICE.descripcion);
   setText("an-precio", priceText());
   setText("an-cta-precio", priceText());
   setText("an-precio-nota", NEW_YEAR_SERVICE.precioNota);
   setText("an-incluye-titulo", NEW_YEAR_SERVICE.incluyeTitulo);
   setText("an-entrega-titulo", NEW_YEAR_SERVICE.entrega?.titulo);
-
-  const sorteo = NEW_YEAR_SERVICE.sorteo;
-  if (sorteo) {
-    const sorteoSection = document.getElementById("sorteo");
-    if (sorteoSection) sorteoSection.hidden = false;
-    setText("an-sorteo-titulo", sorteo.titulo);
-    setText("an-sorteo-texto", sorteo.texto);
-  } else {
-    const sorteoSection = document.getElementById("sorteo");
-    if (sorteoSection) sorteoSection.hidden = true;
-  }
 
   const incluyeEl = document.getElementById("an-incluye");
   if (incluyeEl && Array.isArray(NEW_YEAR_SERVICE.incluye)) {

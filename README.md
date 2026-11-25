@@ -19,7 +19,7 @@ Sitio estático de **Tarot con Karu** (`@tarot.con.karu`): tiradas de tarot, ses
 │   ├── arcano.js           # Render de la página del pack
 │   ├── clipboard.js        # Copiado al portapapeles compartido
 │   ├── assets/
-│   │   └── arcano-pack.svg # Ilustración del banner y de la página del pack
+│   │   └── arcano-banner.webp # Imagen del banner y del hero del pack
 │   └── data/
 │       └── services.js     # ✏️ Todo el contenido editable
 └── README.md
@@ -107,7 +107,6 @@ En `NEW_YEAR_SERVICE`:
 | `incluye` / `incluyeTitulo` | Array de `{ titulo, texto }` y título del bloque «¿Qué incluye?». |
 | `entrega` | `{ titulo, lectura: { titulo, texto }, velaIntro, modalidades: [{ titulo, texto }] }`. |
 | `condiciones` | Array del panel lateral. |
-| `sorteo` | `{ titulo, texto }` del bloque del sorteo (si se elimina, la sección se oculta sola). |
 | `mensaje` | Mensaje prearmado para copiar y enviar por IG. |
 
 El pack tiene su **página dedicada** en `public/arcano-del-ano.html`, armada por `arcano.js` con los mismos datos. La landing solo muestra un banner cliqueable que lleva ahí.

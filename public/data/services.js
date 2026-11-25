@@ -50,7 +50,7 @@ export const NEW_YEAR_SERVICE = {
   // Textos del banner compacto de la landing.
   bannerTexto:
     "Una propuesta integral y de cupos limitados para conocer la energía que va a acompañar tu nuevo ciclo y potenciar tus propios deseos e intenciones.",
-  bannerCta: "Hacé clic para ver todo lo que incluye, modalidades y sorteo",
+  bannerCta: "Ver todo lo que incluye y las modalidades de entrega",
 
   incluyeTitulo: "¿Qué incluye este pack?",
   incluye: [
@@ -104,12 +104,6 @@ export const NEW_YEAR_SERVICE = {
     "Retiro sin cargo en Salta capital",
     "Envío a todo el país a cargo del cliente, sujeto a cobertura postal",
   ],
-
-  sorteo: {
-    titulo: "Sorteo Especial de Fin de Año",
-    texto:
-      "Con motivo de este lanzamiento limitado, voy a estar realizando un sorteo especial de fin de año exclusivo para mis seguidores de Instagram y TikTok. Para participar y poder recibir el premio, es requisito obligatorio seguirme sí o sí en Instagram y en TikTok; en caso de que la persona ganadora no cumpla con este requisito, no se realizará la entrega ni el encendido de la vela y se volverá a sortear.",
-  },
 
   mensaje:
     "¡Hola Karu! 🌙 Me interesa el «Pack Arcano del Año & Vela Intencionada (Lanzamiento Limitado)» ($15.000). ¿Me contás cómo reservo mi cupo? ¡Gracias! ✨",
