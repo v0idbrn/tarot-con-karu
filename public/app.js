@@ -126,13 +126,17 @@ const copyIcon = `
   </svg>
 `;
 
-function serviceCard(item, { label, className = "" } = {}) {
+function serviceCard(
+  item,
+  { label, className = "", detailLabel = "¿Qué incluye?" } = {}
+) {
   const requisito = item.requisito
     ? `<p class="card-req"><span class="req-label">Requisito</span>${item.requisito}</p>`
     : "";
 
   const eyebrow =
     label ?? item.categoria ?? (item.duracion ? `Sesión · ${item.duracion}` : "Servicio");
+  const detailId = `detalle-${item.id}`;
 
   return `
     <article class="card ${className}">
@@ -141,8 +145,21 @@ function serviceCard(item, { label, className = "" } = {}) {
         <span class="card-price">${formatPrice(item.precio) ?? "A confirmar"}</span>
       </div>
       <h3 class="card-title">${item.nombre}</h3>
-      <p class="card-desc">${item.descripcion}</p>
-      ${requisito}
+      <button
+        class="card-toggle"
+        type="button"
+        data-detail="${detailId}"
+        data-label="${detailLabel}"
+        aria-expanded="false"
+        aria-controls="${detailId}"
+      >
+        <span class="card-toggle-label">${detailLabel}</span>
+        <span class="card-toggle-icon" aria-hidden="true">⌄</span>
+      </button>
+      <div class="card-detail" id="${detailId}" hidden>
+        <p class="card-desc">${item.descripcion}</p>
+        ${requisito}
+      </div>
       <button class="btn btn-card" type="button" data-copy="${item.id}">
         ${copyIcon}
         Copiar mensaje y abrir IG
@@ -165,7 +182,12 @@ function renderTiradas() {
       : TIRADA_SERVICES.filter((tirada) => tirada.categoria === activeCategory);
 
   tiradasGrid.innerHTML = list
-    .map((tirada) => serviceCard(tirada, { label: tirada.categoria }))
+    .map((tirada) =>
+      serviceCard(tirada, {
+        label: tirada.categoria,
+        detailLabel: "¿Qué incluye?",
+      })
+    )
     .join("");
 }
 
@@ -258,6 +280,7 @@ if (sesionesGrid) {
     serviceCard(sesion, {
       label: `Sesión · ${sesion.duracion}`,
       className: "card--sesion",
+      detailLabel: "¿En qué consiste?",
     })
   ).join("");
 }
@@ -273,7 +296,11 @@ if (ritualWarning) {
 
 if (ritualesGrid) {
   ritualesGrid.innerHTML = RITUAL_SERVICES.map((ritual) =>
-    serviceCard(ritual, { label: "Ritual", className: "card--ritual" })
+    serviceCard(ritual, {
+      label: "Ritual",
+      className: "card--ritual",
+      detailLabel: "¿Qué hace?",
+    })
   ).join("");
 }
 
@@ -395,6 +422,25 @@ function setupNewYearToggle() {
     }
   });
 }
+
+/* ---------------- Detalle de cada tarjeta ---------------- */
+
+document.addEventListener("click", (event) => {
+  const toggle = event.target.closest("[data-detail]");
+  if (!toggle) return;
+
+  const detail = document.getElementById(toggle.dataset.detail);
+  if (!detail) return;
+
+  const expanded = toggle.getAttribute("aria-expanded") === "true";
+  toggle.setAttribute("aria-expanded", String(!expanded));
+  detail.hidden = expanded;
+
+  const labelEl = toggle.querySelector(".card-toggle-label");
+  if (labelEl) {
+    labelEl.textContent = expanded ? toggle.dataset.label : "Ocultar";
+  }
+});
 
 /* ---------------- Copiar y abrir Instagram ---------------- */
 

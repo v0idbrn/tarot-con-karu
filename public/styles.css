@@ -904,6 +904,57 @@ svg {
   color: var(--muted);
 }
 
+.card-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(247, 232, 236, 0.5);
+  color: var(--crimson);
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.card-toggle:hover {
+  background: var(--blush-bg);
+  border-color: var(--blush);
+}
+
+.card-toggle:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 2px;
+}
+
+.card-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.card-toggle[aria-expanded="true"] .card-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.card-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-detail[hidden] {
+  display: none;
+}
+
 .card-req {
   padding: 11px 14px;
   border-left: 2px solid var(--blush);
